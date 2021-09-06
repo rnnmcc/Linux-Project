@@ -1,0 +1,24 @@
+#$ -S /bin/bash
+#$ -N plot
+#$ -q all.q
+#$ -t 1
+#$ -cwd
+
+
+~/anaconda3/bin/python ./plot.py
+
+
+# tidy up
+num=0
+for i in $(cat xvals)
+do
+  let num+=1
+  rm ./lorenz_${num}.py
+  rm xf_${num}.txt
+done
+rm xvals
+rm time.txt
+rm lorenz.e* lorenz.o*
+rm plot.e* plot.o*
+
+exit 0
